@@ -1,13 +1,13 @@
 package org.abpc.repository;
 
-import org.abpc.bean.User;
+import org.abpc.bean.Medal;
 import org.springframework.data.repository.CrudRepository;
 
 import javax.transaction.Transactional;
 
 @Transactional
-public interface UserRepository extends CrudRepository<User, Long> {
+public interface MedalRepository extends CrudRepository<Medal, Long> {
 
-    User findByEmail(String email);
+    Medal findByStudentName(String studentName);
 
 }
