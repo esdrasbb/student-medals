@@ -5,6 +5,9 @@ import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import java.io.Serializable;
 
@@ -16,18 +19,17 @@ public class Medal extends BaseModel implements Serializable {
 
     private static final long serialVersionUID = 1084477468035896090L;
 
-    private String studentName;
     private Integer amount;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_student", referencedColumnName = "id")
+    private Student student;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_classes", referencedColumnName = "id")
+    private Classes classes;
+
     public Medal() {
-    }
-
-    public String getStudentName() {
-        return studentName;
-    }
-
-    public void setStudentName(String studentName) {
-        this.studentName = studentName;
     }
 
     public Integer getAmount() {
@@ -36,6 +38,22 @@ public class Medal extends BaseModel implements Serializable {
 
     public void setAmount(Integer amount) {
         this.amount = amount;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
+    public Classes getClasses() {
+        return classes;
+    }
+
+    public void setClasses(Classes classes) {
+        this.classes = classes;
     }
 
     @Override

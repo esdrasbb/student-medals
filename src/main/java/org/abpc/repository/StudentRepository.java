@@ -1,10 +1,10 @@
 package org.abpc.repository;
 
-import org.abpc.bean.Medal;
+import org.abpc.bean.Student;
 import org.springframework.data.repository.CrudRepository;
 
 import javax.transaction.Transactional;
 
 @Transactional
-public interface MedalRepository extends CrudRepository<Medal, Long> {
+public interface StudentRepository extends CrudRepository<Student, Long> {
 }

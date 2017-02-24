@@ -4,9 +4,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.io.Serializable;
@@ -22,9 +20,8 @@ public class Student extends BaseModel implements Serializable {
 
     private String name;
 
-    @OneToMany(targetEntity = Classes.class,
-            fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Classes> participatedClasses;
+    @OneToMany(mappedBy = "student")
+    private List<Medal> medals;
 
     public Student() {
     }
@@ -37,12 +34,12 @@ public class Student extends BaseModel implements Serializable {
         this.name = name;
     }
 
-    public List<Classes> getParticipatedClasses() {
-        return participatedClasses;
+    public List<Medal> getMedals() {
+        return medals;
     }
 
-    public void setParticipatedClasses(List<Classes> participatedClasses) {
-        this.participatedClasses = participatedClasses;
+    public void setMedals(List<Medal> medals) {
+        this.medals = medals;
     }
 
     @Override
