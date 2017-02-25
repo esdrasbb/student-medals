@@ -6,5 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 import javax.transaction.Transactional;
 
 @Transactional
-public interface ClassesRepository extends CrudRepository<Classes, Long> {
+public interface ClassesRepository extends CrudRepository<Classes, Integer> {
 }

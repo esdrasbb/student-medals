@@ -32,6 +32,12 @@ public class Medal extends BaseModel implements Serializable {
     public Medal() {
     }
 
+    public Medal(Integer amount, Student student, Classes classes) {
+        this.amount = amount;
+        this.student = student;
+        this.classes = classes;
+    }
+
     public Integer getAmount() {
         return amount;
     }

@@ -5,10 +5,8 @@ import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.io.Serializable;
-import java.util.List;
 
 @Entity
 @Table(name = "student")
@@ -20,9 +18,6 @@ public class Student extends BaseModel implements Serializable {
 
     private String name;
 
-    @OneToMany(mappedBy = "student")
-    private List<Medal> medals;
-
     public Student() {
     }
 
@@ -32,14 +27,6 @@ public class Student extends BaseModel implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public List<Medal> getMedals() {
-        return medals;
-    }
-
-    public void setMedals(List<Medal> medals) {
-        this.medals = medals;
     }
 
     @Override

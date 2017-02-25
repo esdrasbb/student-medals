@@ -1,5 +1,7 @@
 package org.abpc.bean;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import org.abpc.bean.json.CustomDateDeserializer;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
@@ -19,7 +21,8 @@ public class Classes extends BaseModel implements Serializable {
 
     private static final long serialVersionUID = 607426898190203102L;
 
-    @Temporal(TemporalType.TIME)
+    @Temporal(TemporalType.DATE)
+    @JsonDeserialize(using = CustomDateDeserializer.class)
     private Date date;
 
     public Classes() {
