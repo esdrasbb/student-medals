@@ -12,14 +12,14 @@
             {{class.date}}
         </th>
     </tr>
-    <tr class="success-{{medal.classes}}" ng-repeat="student in students">
+    <tr class="success-{{medal.classes}}" ng-repeat="to in students">
         <td>{{$index+1}}</td>
         <td>
-            {{student.name}}
+            {{to.student.name}}
         </td>
         <td ng-repeat="class in classes">
-            <div ng-show="{{student.participatedClasses.indexOf(class.date) > -1}}"><img src="image/medal.jpg"
-                                                                                         style="width:35px;height:35px;">
+            <div ng-show="{{to.classMedalAmountMap[class.id]}}">
+                <img src="image/medal.jpg" style="width:35px;height:35px;"> x {{to.classMedalAmountMap[class.id]}}
             </div>
         </td>
     </tr>

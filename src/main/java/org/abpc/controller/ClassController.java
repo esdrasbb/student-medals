@@ -34,7 +34,7 @@ public class ClassController {
     @GetMapping(API_CONTEXT + "/classes")
     @ResponseBody
     public Iterable<Classes> findAll() {
-        return classesRepository.findAll();
+        return classesRepository.findAllByOrderByDateAsc();
     }
 
     @GetMapping(API_CONTEXT + "/classes/{id}")
@@ -59,8 +59,8 @@ public class ClassController {
         String[] idsValues = StringUtils.split(ids, ID_SPLIT_TOKEN);
         Student student = studentRepository.findOne(Integer.valueOf(idsValues[0]));
         Classes classes = classesRepository.findOne(Integer.valueOf(idsValues[1]));
-        return medalRepository.save(new Medal(1, student, classes));
-        //TODO passar a quantidade de medalhas pela interface e recuperar por aqui
+        Integer amount = Integer.valueOf(idsValues[2]);
+        return medalRepository.save(new Medal(amount, student, classes));
     }
 
 }

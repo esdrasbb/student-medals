@@ -9,6 +9,8 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Entity
@@ -19,14 +21,18 @@ public class Medal extends BaseModel implements Serializable {
 
     private static final long serialVersionUID = 1084477468035896090L;
 
+    @NotNull
+    @Min(value = 1)
     private Integer amount;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_student", referencedColumnName = "id")
+    @NotNull
     private Student student;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_classes", referencedColumnName = "id")
+    @NotNull
     private Classes classes;
 
     public Medal() {

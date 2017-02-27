@@ -1,7 +1,7 @@
 package org.abpc.controller;
 
 
-import org.abpc.bean.Medal;
+import org.abpc.bean.to.StudentMedalTO;
 import org.abpc.repository.MedalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,8 +18,7 @@ public class MedalController {
 
     @GetMapping(API_CONTEXT + "/medals")
     @ResponseBody
-    public Iterable<Medal> getMedals() {
-        return medalRepository.findAll();
+    public Iterable<StudentMedalTO> getMedals() {
+        return medalRepository.getMedalAmount();
     }
-
 }

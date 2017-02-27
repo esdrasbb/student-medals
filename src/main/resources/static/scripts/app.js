@@ -53,7 +53,7 @@ app.controller('DisplayCtrl', function ($scope, $http) {
         console.log('Error ' + data)
     })
 
-    $http.get('/api/v1/students').success(function (data) {
+    $http.get('/api/v1/students/display').success(function (data) {
         $scope.students = data;
     }).error(function (data, status) {
         console.log('Error ' + data)
@@ -112,10 +112,11 @@ app.controller('AddClassCtrl', function ($scope, $http, $location) {
         $scope.students = data;
     }).error(function (data, status) {
         console.log('Error ' + data)
-    })
+    });
 
     $scope.studentSelected = {};
     $scope.classSelected = {};
+    $scope.amount = 1;
     $scope.classes = {};
 
     $scope.getClasses = function () {
@@ -126,10 +127,10 @@ app.controller('AddClassCtrl', function ($scope, $http, $location) {
         }).error(function (data, status) {
             console.log('Error ' + data)
         })
-    }
+    };
 
     $scope.addClass = function () {
-        data = $scope.studentSelected.id + "#" + $scope.classSelected.id
+        data = $scope.studentSelected.id + "#" + $scope.classSelected.id + "#" + $scope.amount;
 
         $http.post('/api/v1/class', data).success(function (data) {
             $location.path('/students');

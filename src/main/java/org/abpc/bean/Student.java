@@ -6,6 +6,7 @@ import org.hibernate.annotations.Where;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Entity
@@ -16,6 +17,7 @@ public class Student extends BaseModel implements Serializable {
 
     private static final long serialVersionUID = 5261212423198140046L;
 
+    @NotNull
     private String name;
 
     public Student() {
